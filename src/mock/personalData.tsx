@@ -21,7 +21,7 @@ export interface PersonalProfile {
 // 3. Data mock personal
 export const profile: PersonalProfile = {
   name: 'Khoirul Aziz',
-  profilePic: '/images/avatars/aziz.jpg',
+  profilePic: '/vercel.svg',
   role: 'Software Engineer',
   desc: 'I build web aplication',
   socials: {

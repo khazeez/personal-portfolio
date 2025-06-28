@@ -9,7 +9,7 @@ import Experience from '@/components/layout/experience';
 export default function Home() {
   return (
     <>
-      <div className='container grid grid-cols-4 lg lg:h-screen mx-auto'>
+      <div className='container grid grid-cols-4 lg:h-screen mx-auto'>
         <div className=' lg:col-span-1 col-span-4'>
           <Hero />
         </div>

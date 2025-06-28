@@ -9,6 +9,7 @@ import {
   FaWhatsapp,
 } from 'react-icons/fa';
 import React, { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const SECTION_IDS = ['about', 'portfolio', 'blog'] as const;
 type SectionId = (typeof SECTION_IDS)[number];
@@ -93,13 +94,17 @@ export default function Hero() {
 
   /* ────────── UI Layout ────────── */
   return (
-    <section className='flex flex-col lg:justify-between lg:h-screen lg:py-10 lg:px-10 p-5 gap-6 pt-14 lg:pt-0'>
+    <section className='flex flex-col lg:justify-between lg:h-screen lg:py-10 lg:px-10 p-5 gap-6 pt-7 lg:pt-0'>
       {/* Navbar */}
       <nav
         className={`
-          fixed inset-x-0 top-0 z-30 tracking-widest order-1 lg:order-2 lg:static
+          fixed inset-x-0 bottom-0 z-30 tracking-widest order-1 lg:order-2 lg:static
           transition-colors duration-500
-          ${scrolled ? 'bg-background/80 backdrop-blur' : 'bg-transparent'}
+          ${
+            scrolled
+              ? 'bg-background/80 backdrop-blur'
+              : 'bg-transparent hidden lg:block'
+          }
           lg:bg-transparent lg:backdrop-blur-none lg:pb-40
         `}
       >
@@ -112,8 +117,13 @@ export default function Hero() {
 
       {/* Profil */}
       <div className='order-2 lg:order-1 leading-7 tracking-wider space-y-3 lg:pt-20'>
-        <h1 className='text-4xl font-bold'>{profile.name}</h1>
-        <p className='text-xl'>{profile.role}</p>
+        <div className=''>
+          <div className=''>
+            <h1 className='text-4xl font-bold'>{profile.name}</h1>
+            <p className='text-xl'>{profile.role}</p>
+          </div>
+        </div>
+
         <p className='mt-3 text-gray-600'>{about.headline}</p>
       </div>
 
