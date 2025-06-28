@@ -29,7 +29,7 @@ export const profile: PersonalProfile = {
     github: 'https://github.com/khazeez',
     linkedin: 'linkedin.com/in/khoirul-aziz',
     discord: 'Aziz#1234',
-    email: 'aziz@example.com',
+    email: 'eeroel99@gmail.com',
     wa: '+6285784483657',
   },
 };
