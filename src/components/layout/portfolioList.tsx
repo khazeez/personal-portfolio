@@ -4,7 +4,10 @@ import Image from 'next/image';
 export default function PortfolioList() {
   return (
     <div className='gap-y-5 py-10'>
-      <h1 id='portfolio' className='text-5xl font-bold scroll-mt-24'>
+      <h1
+        id='portfolio'
+        className='lg:text-5xl text-3xl font-bold scroll-mt-24'
+      >
         What i do
       </h1>
 

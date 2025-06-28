@@ -95,7 +95,7 @@ border: 1px solid rgba(255, 255, 255, 0.26);
   /* Cahaya biru pekat → transparan */
   background: radial-gradient(
     circle,
-    rgb(56, 184, 248) 0%,      /* biru‑500 Tailwind, opacity 85 % */
+    var(--accent) 0%,      /* biru‑500 Tailwind, opacity 85 % */
     rgba(59, 130, 246, 0.10) 45%,     /* tepi pudar */
     rgba(59, 130, 246, 0.00) 70%
   );

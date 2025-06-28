@@ -10,7 +10,7 @@ export default function BlogList() {
     <div className='tracking-widest gap-y-5 item-center py-10 space-y-10'>
       <h1
         id='blog'
-        className='text-5xl font-bold border-b-accent border-b-4 w-15 scroll-mt-24'
+        className='lg:text-5xl text-3xl font-bold border-b-accent border-b-4 w-15 scroll-mt-24'
       >
         Writing
       </h1>
