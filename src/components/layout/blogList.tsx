@@ -15,15 +15,9 @@ export default function BlogList() {
         Writing
       </h1>
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-        labore ab, veniam sequi cupiditate temporibus aspernatur aut iure quidem
-        optio iusto qui nihil aliquam perferendis culpa omnis, obcaecati nemo
-        explicabo?
-      </p>
 
       {/* Timeline */}
-      <ol className='relative border-s border-gray-200 dark:border-gray-700'>
+      <ol className='relative border-s border-gray-200 dark:border-gray-700 ml-4'>
         {posts.map((post, idx) => {
           const snippet =
             post.content.length > 180
@@ -45,8 +39,7 @@ export default function BlogList() {
                 </svg>
               </span>
 
-              {/* Konten dibungkus Glassmorphin */}
-              <Glassmorphin className='p-6'>
+          
                 <h3 className='flex flex-wrap items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white'>
                   {post.title}
                   {idx === 0 && (
@@ -79,7 +72,6 @@ export default function BlogList() {
                     </span>
                   ))}
                 </div>
-              </Glassmorphin>
             </li>
           );
         })}

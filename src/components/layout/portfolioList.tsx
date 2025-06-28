@@ -6,9 +6,9 @@ export default function PortfolioList() {
     <div className='gap-y-5 py-10'>
       <h1
         id='portfolio'
-        className='lg:text-5xl text-3xl font-bold scroll-mt-24'
+        className='lg:text-5xl text-3xl font-bold scroll-mt-24 pb-5'
       >
-        What i do
+        <span className='border-b-accent border-b-4 w-1'>What </span>i Do
       </h1>
 
       <section className='grid grid-cols-1 gap-8 py-5 sm:grid-cols-2 lg:grid-cols-2'>

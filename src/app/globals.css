@@ -19,9 +19,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* --background: #13243d; */
+    --background: #141923;
     --foreground: #CBD5E1;
-    --background: #151b26;
+    /* --background: #151b26; */
   }
 }
 
@@ -70,13 +70,12 @@ body {
 
 .glassmorphin {
  /* From https://css.glass */
-/* From https://css.glass */
 background: rgba(255, 255, 255, 0.05);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(1.9px);
--webkit-backdrop-filter: blur(1.9px);
-border: 1px solid rgba(255, 255, 255, 0.26);
+backdrop-filter: blur(0px);
+-webkit-backdrop-filter: blur(0px);
+border: 1px solid var(--accent);
 }
 
 
