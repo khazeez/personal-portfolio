@@ -27,7 +27,7 @@ export default function BlogList() {
           return (
             <li key={post.title} className='mb-10 ms-6'>
               {/* Titik timeline */}
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-4 ring-blue-400/40 ring-offset-0 dark:bg-accent'>
+              <span className='absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-4 ring-blue-400/40 ring-offset-0 bg-accent'>
                 <svg
                   className='w-2.5 h-2.5 text-background dark:text-background'
                   aria-hidden='true'
@@ -43,7 +43,7 @@ export default function BlogList() {
                 <h3 className='flex flex-wrap items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white'>
                   {post.title}
                   {idx === 0 && (
-                    <span className='bg-blue-100 text-background text-sm font-medium ms-3 px-2.5 py-0.5 rounded-sm dark:bg-accent dark:text-background'>
+                    <span className='bg-blue-100 text-background text-sm font-medium ms-3 px-2.5 py-0.5 rounded-sm bg-accent dark:text-background'>
                       Latest
                     </span>
                   )}
