@@ -27,7 +27,7 @@ export default function BlogList() {
           return (
             <li key={post.title} className='mb-10 ms-6'>
               {/* Titik timeline */}
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-4 ring-blue-400/40 ring-offset-0 bg-accent'>
+              <span className='absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-4 ring-blue-400/40 ring-offset-0 bg-accent'>
                 <svg
                   className='w-2.5 h-2.5 text-background dark:text-background'
                   aria-hidden='true'
@@ -66,7 +66,7 @@ export default function BlogList() {
                   {post.category.map((cat) => (
                     <span
                       key={cat}
-                      className='text-xs font-medium bg-blue-100 dark:bg-accent text-background dark:text-background px-2 py-0.5 rounded-sm'
+                      className='text-xs font-medium bg-accent text-background dark:text-background px-2 py-0.5 rounded-sm'
                     >
                       {cat}
                     </span>
