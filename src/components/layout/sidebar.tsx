@@ -18,7 +18,7 @@ export default function Hero() {
   const [activeId, setActiveId] = useState<SectionId>('about');
   const [scrolled, setScrolled] = useState(false);
 
-  const iconClass = 'transition-transform hover:-translate-y-1';
+  const iconClass = 'transition-transform hover:-translate-y-1 opacity-60 hover:opacity-100';
 
   /* ────────── ScrollSpy ────────── */
   useEffect(() => {
@@ -127,7 +127,7 @@ export default function Hero() {
       </div>
 
       {/* Ikon sosial */}
-      <div className='order-3 flex gap-5 pt-3 lg:pb-10'>
+      <div className='order-3 flex gap-5 pt-3 lg:pb-10 bg-red'>
         <a
           href={profile.socials.twitter}
           target='_blank'
