@@ -27,7 +27,7 @@ export const profile: PersonalProfile = {
   socials: {
     twitter: 'https://twitter.com/aziz_dev',
     github: 'https://github.com/khazeez',
-    linkedin: 'linkedin.com/in/khoirul-aziz',
+    linkedin: 'httpslinkedin.com/in/khoirul-aziz',
     discord: 'Aziz#1234',
     email: 'eeroel99@gmail.com',
     wa: '+6285784483657',
@@ -53,8 +53,7 @@ export interface Experience {
   
   // Mock content
   export const about: AboutData = {
-    headline:
-      'I antusiast on blockchain ecosystem',
+    headline: 'Automation | Blockchain | DeFi | AI',
     paragraphs: [
       "I’m an Automation Engineer with a strong focus on building reliable testing systems and streamlining development workflows. As a freelance Software Engineer, I work across various tech stacks to deliver efficient and scalable solutions for clients. I'm also a passionate blockchain enthusiast, constantly exploring smart contracts, decentralized applications, and the future of Web3. With a blend of automation expertise and curiosity in emerging technologies, I enjoy solving complex problems and bringing high-impact ideas to life.",
     ],

@@ -8,7 +8,7 @@ export default function PortfolioList() {
         id='portfolio'
         className='lg:text-5xl text-3xl font-bold scroll-mt-24 pb-5'
       >
-        <span className='border-b-accent border-b-4 w-1'>What </span>i Do
+        <span className='border-b-accent border-b-4 w-1'>What </span>I Do
       </h1>
 
       <section className='grid grid-cols-1 gap-8 py-5 sm:grid-cols-2 lg:grid-cols-2'>

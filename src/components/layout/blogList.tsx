@@ -39,39 +39,38 @@ export default function BlogList() {
                 </svg>
               </span>
 
-          
-                <h3 className='flex flex-wrap items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white'>
-                  {post.title}
-                  {idx === 0 && (
-                    <span className='bg-blue-100 text-background text-sm font-medium ms-3 px-2.5 py-0.5 rounded-sm bg-accent dark:text-background'>
-                      Latest
-                    </span>
-                  )}
-                </h3>
+              <h3 className='flex flex-wrap items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white'>
+                {post.title}
+                {idx === 0 && (
+                  <span className='text-background text-sm font-medium ms-3 px-2.5 py-0.5 rounded-sm bg-accent dark:text-background'>
+                    Latest
+                  </span>
+                )}
+              </h3>
 
-                <time className='block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>
-                  {new Date(post.timestamp).toLocaleDateString('en-US', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  })}
-                </time>
+              <time className='block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>
+                {new Date(post.timestamp).toLocaleDateString('en-US', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })}
+              </time>
 
-                <p className='mb-4 text-base font-normal text-gray-500 dark:text-gray-400'>
-                  {snippet}
-                </p>
+              <p className='mb-4 text-base font-normal text-gray-500 dark:text-gray-400'>
+                {snippet}
+              </p>
 
-                {/* Badge kategori */}
-                <div className='flex flex-wrap gap-2'>
-                  {post.category.map((cat) => (
-                    <span
-                      key={cat}
-                      className='text-xs font-medium bg-accent text-background dark:text-background px-2 py-0.5 rounded-sm'
-                    >
-                      {cat}
-                    </span>
-                  ))}
-                </div>
+              {/* Badge kategori */}
+              <div className='flex flex-wrap gap-2'>
+                {post.category.map((cat) => (
+                  <span
+                    key={cat}
+                    className='text-xs font-medium glassmorphin text-accent dark:text-accent px-2 py-0.5 rounded-sm'
+                  >
+                    {cat}
+                  </span>
+                ))}
+              </div>
             </li>
           );
         })}

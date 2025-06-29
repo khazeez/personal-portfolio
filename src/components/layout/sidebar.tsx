@@ -98,15 +98,14 @@ export default function Hero() {
       {/* Navbar */}
       <nav
         className={`
-          fixed inset-x-0 bottom-0 z-30 tracking-widest order-1 lg:order-2 lg:static
-          transition-colors duration-500
-          ${
-            scrolled
-              ? 'bg-background/80 backdrop-blur'
-              : 'bg-transparent hidden lg:block'
-          }
-          lg:bg-transparent lg:backdrop-blur-none lg:pb-40
-        `}
+              fixed inset-x-0 bottom-0 z-30 tracking-widest order-1 lg:order-2 lg:static
+              transition-all duration-500 ease-[cubic-bezier(.4,0,.2,1)]
+              ${scrolled
+                ? 'opacity-100 translate-y-0 bg-background/80 backdrop-blur h-15 items-center justify-center'
+                : 'opacity-0 translate-y-full pointer-events-none'}
+              lg:opacity-100 lg:translate-y-0 lg:pointer-events-auto
+              lg:bg-transparent lg:backdrop-blur-none lg:pb-40
+            `}
       >
         <ul className='flex lg:flex-col lg:gap-3 justify-between px-5 py-2 text-sm'>
           {SECTION_IDS.map((id) => (
@@ -118,8 +117,8 @@ export default function Hero() {
       {/* Profil */}
       <div className='order-2 lg:order-1 leading-7 tracking-wider space-y-3 lg:pt-20'>
         <div className=''>
-          <div className=''>
-            <h1 className='text-4xl font-bold'>{profile.name}</h1>
+          <div className=' space-y-3'>
+            <h1 className='text-4xl font-bold '>{profile.name}</h1>
             <p className='text-xl'>{profile.role}</p>
           </div>
         </div>
