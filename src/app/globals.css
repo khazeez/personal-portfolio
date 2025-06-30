@@ -63,14 +63,21 @@ body {
   animation: wiggleBg 24s ease-in-out infinite alternate;
 }
 
-@keyframes moveGlows {
-  0% {
-    transform: translateY(-5%);
+@keyframes gradientMove {
+  0%, 100% {
+    background-position: 0% 50%;
   }
-  100% {
-    transform: translateY(5%);
+  50% {
+    background-position: 100% 50%;
   }
 }
+
+.bg-accent-animated {
+  background: linear-gradient(-45deg, #d946ef, #9333ea, #6366f1, #3b82f6); /* nuansa accent */
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+}
+
 
 .glassmorphin {
  /* From https://css.glass */

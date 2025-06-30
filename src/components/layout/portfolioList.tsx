@@ -56,6 +56,7 @@ export default function PortfolioList() {
           </article>
         ))}
       </section>
+      
     </div>
   );
 }
