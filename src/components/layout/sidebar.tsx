@@ -127,7 +127,7 @@ export default function Hero() {
       </div>
 
       {/* Ikon sosial */}
-      <div className='order-3 flex gap-5 pt-3 lg:pb-10 bg-red'>
+      <div className='order-3 flex gap-5 pt-3 pb-10 bg-red'>
         <a
           href={profile.socials.twitter}
           target='_blank'
