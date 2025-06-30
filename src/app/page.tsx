@@ -10,7 +10,7 @@ export default function Home() {
       className="
         max-w-screen-xl mx-auto       /* lebar maksimal & auto‑center */
         px-5 lg:px-10                 /* padding kiri‑kanan */
-        grid gap-x-8 gap-y-16         /* jarak antar‑kolom & antar‑row */
+        grid gap-x-8 gap-y-10         /* jarak antar‑kolom & antar‑row */
         lg:grid-cols-5                /* 1 kolom di mobile, 5 kolom ≥ lg */
       "
     >
@@ -20,6 +20,7 @@ export default function Home() {
           lg:col-span-2               /* ambil 2 kolom di desktop */
           lg:sticky lg:top-0          /* selalu terlihat saat scroll */
           lg:h-screen                 /* penuh tinggi layar */
+          lg:px-0
         "
       >
         <Hero />
@@ -28,7 +29,7 @@ export default function Home() {
       {/* === KONTEN ====================================================== */}
       <main
         className="
-          space-y-16                  /* jarak antar‑section */
+          space-y-10                  /* jarak antar‑section */
           lg:col-span-3 lg:col-start-3/* mulai di kolom‑3, ambil 3 kolom */
           lg:p-10
         "
