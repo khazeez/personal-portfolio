@@ -75,7 +75,7 @@ export default function Hero() {
           tabIndex={0}
           aria-current={isActive ? 'page' : undefined}
           className={`
-            block text-left w-full
+            block text-left
             transition-all duration-800
             ease-[cubic-bezier(.33,1,.68,1)]
             ${
@@ -94,7 +94,7 @@ export default function Hero() {
 
   /* ────────── UI Layout ────────── */
   return (
-    <section className='flex flex-col lg:justify-between lg:h-screen lg:py-10 lg:px-10 gap-6 pt-7 lg:pt-0'>
+    <section className='flex flex-col lg:justify-between lg:h-screen lg:py-10 gap-6 pt-7 lg:pt-0 px-5 lg:px-10'>
       {/* Navbar */}
       <nav
         className={`
@@ -127,7 +127,7 @@ export default function Hero() {
       </div>
 
       {/* Ikon sosial */}
-      <div className='order-3 flex gap-5 pt-3 pb-10 bg-red'>
+      <div className='order-3 flex gap-5 pt-3 pb-20 bg-red'>
         <a
           href={profile.socials.twitter}
           target='_blank'

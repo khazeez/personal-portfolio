@@ -1,21 +1,25 @@
-import Image from 'next/image';
 import About from '@/components/layout/about';
 import Hero from '@/components/layout/sidebar';
 import BlogList from '@/components/layout/blogList';
 import PortfolioList from '@/components/layout/portfolioList';
 import Footer from '@/components/layout/footer';
-import Experience from '@/components/layout/experience';
 
 export default function Home() {
   return (
-    <div className="lg:flex mx-auto">               {/* 1. pakai flex di layar besar */}
+    <div
+      className="
+        max-w-screen-xl mx-auto       /* lebar maksimal & auto‑center */
+        px-5 lg:px-10                 /* padding kiri‑kanan */
+        grid gap-x-8 gap-y-16         /* jarak antar‑kolom & antar‑row */
+        lg:grid-cols-5                /* 1 kolom di mobile, 5 kolom ≥ lg */
+      "
+    >
       {/* === SIDEBAR ===================================================== */}
       <aside
         className="
-          w-full                   
-          lg:fixed lg:inset-y-0 lg:left-0
-          lg:h-screen
-          px-6 py-8 lg:pl-10
+          lg:col-span-2               /* ambil 2 kolom di desktop */
+          lg:sticky lg:top-0          /* selalu terlihat saat scroll */
+          lg:h-screen                 /* penuh tinggi layar */
         "
       >
         <Hero />
@@ -24,17 +28,13 @@ export default function Home() {
       {/* === KONTEN ====================================================== */}
       <main
         className="
-          w-full                  /* sisa ruang 3 kolom         */
-          lg:ml-[25%]                       /* geser supaya tdk ketutup   */
-          px-5 lg:px-30                     /* padding                    */
-          space-y-16                        /* jarak antar‑section        */
-          lg:py-15
+          space-y-16                  /* jarak antar‑section */
+          lg:col-span-3 lg:col-start-3/* mulai di kolom‑3, ambil 3 kolom */
+          lg:p-10
         "
       >
         <About />
-
         {/* <Experience /> */}
-
         <PortfolioList />
         <BlogList />
         <Footer />
