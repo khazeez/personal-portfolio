@@ -8,7 +8,7 @@ import Experience from '@/components/layout/experience';
 
 export default function Home() {
   return (
-    <div className="lg:flex mx-auto gap-10">               {/* 1. pakai flex di layar besar */}
+    <div className="lg:flex mx-auto">               {/* 1. pakai flex di layar besar */}
       {/* === SIDEBAR ===================================================== */}
       <aside
         className="
