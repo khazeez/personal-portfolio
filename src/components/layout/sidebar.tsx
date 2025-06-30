@@ -101,7 +101,7 @@ export default function Hero() {
               fixed inset-x-0 bottom-0 z-30 tracking-widest order-1 lg:order-2 lg:static
               transition-all duration-500 ease-[cubic-bezier(.4,0,.2,1)]
               ${scrolled
-                ? 'opacity-100 translate-y-0 bg-background/80 backdrop-blur h-15 items-center justify-center'
+                ? 'opacity-100 translate-y-0 bg-background/80 backdrop-blur items-center justify-center'
                 : 'opacity-0 translate-y-full pointer-events-none'}
               lg:opacity-100 lg:translate-y-0 lg:pointer-events-auto
               lg:bg-transparent lg:backdrop-blur-none lg:pb-40

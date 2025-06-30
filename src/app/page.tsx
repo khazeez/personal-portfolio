@@ -8,29 +8,37 @@ import Experience from '@/components/layout/experience';
 
 export default function Home() {
   return (
-    <>
-      <div className='container grid grid-cols-4 lg:h-screen mx-auto'>
-        <div className=' lg:col-span-1 col-span-4'>
-          <Hero />
-        </div>
-        <div className=' lg:col-span-3 col-span-4 overflow-y-auto mx-auto p-5 lg:px-20'>
-          <div className=''>
-            <About />
-          </div>
-          {/* <div className="">
-            <Experience />
-          </div> */}
-          <div className=''>
-            <PortfolioList />
-          </div>
-          <div className='lg:px-5'>
-            <BlogList />
-          </div>
-          <div className="">
-            <Footer />
-          </div>
-        </div>
-      </div>
-    </>
+    <div className="lg:flex mx-auto gap-10">               {/* 1. pakai flex di layar besar */}
+      {/* === SIDEBAR ===================================================== */}
+      <aside
+        className="
+          w-full                   
+          lg:fixed lg:inset-y-0 lg:left-0
+          lg:h-screen
+          px-6 py-8 lg:pl-10
+        "
+      >
+        <Hero />
+      </aside>
+
+      {/* === KONTEN ====================================================== */}
+      <main
+        className="
+          w-full                  /* sisa ruang 3 kolom         */
+          lg:ml-[25%]                       /* geser supaya tdk ketutup   */
+          px-5 lg:px-30                     /* padding                    */
+          space-y-16                        /* jarak antar‑section        */
+          lg:py-15
+        "
+      >
+        <About />
+
+        {/* <Experience /> */}
+
+        <PortfolioList />
+        <BlogList />
+        <Footer />
+      </main>
+    </div>
   );
 }
