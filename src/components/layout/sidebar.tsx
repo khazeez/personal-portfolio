@@ -94,7 +94,7 @@ export default function Hero() {
 
   /* ────────── UI Layout ────────── */
   return (
-    <section className='flex flex-col lg:justify-between lg:h-screen lg:py-10 lg:px-10 p-5 gap-6 pt-7 lg:pt-0'>
+    <section className='flex flex-col lg:justify-between lg:h-screen lg:py-10 lg:px-10 gap-6 pt-7 lg:pt-0'>
       {/* Navbar */}
       <nav
         className={`
