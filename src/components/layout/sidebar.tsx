@@ -166,6 +166,8 @@ export default function Hero() {
         <div className='absolute inset-20 rounded-full bg-accent/10 blur-3xl' />
       </div> */}
       <div className="" id='mouse-glow'></div>
+      <div className="" id='mouse-glow'></div>
+      {/* <div className="" id='mouse-glow'></div> */}
     </section>
   );
 }
