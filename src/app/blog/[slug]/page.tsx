@@ -85,7 +85,7 @@ export default async function BlogDetailPage({
           <span>{readingTime(post.content)} min read</span>
 
           {/* Categories */}
-          <div className="flex flex-wrap gap-2 ml-auto">
+          <div className="flex flex-wrap gap-2 lg:ml-auto">
             {post.category.map((cat) => (
               <span
                 key={cat}
