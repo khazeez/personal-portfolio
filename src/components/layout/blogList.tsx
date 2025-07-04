@@ -1,13 +1,12 @@
-// components/layout/BlogList.tsx
 'use client';
 
 import Glassmorphin from '../ui/glassmorphin';
 import { mockBlogPosts } from '@/mock/blog';
 import Link from 'next/link';
-import { slugify } from '@/components/ui/slugify'; // pastikan path util benar
+import { slugify } from '@/components/ui/slugify';
 
 export default function BlogList() {
-  const posts = mockBlogPosts.slice(0, 5); // 5 post teratas
+  const posts = mockBlogPosts.slice(0, 5); // Ambil 5 post teratas
 
   return (
     <div className='tracking-widest py-10 space-y-10'>
@@ -24,8 +23,8 @@ export default function BlogList() {
           const slug = slugify(post.title);
           const snippet =
             post.content.length > 180
-              ? `${post.content.slice(0, 180)}…`
-              : post.content;
+              ? `${post.content.slice(0, 180).trim()}…`
+              : post.content.trim();
 
           return (
             <li key={slug} className='mb-10 ms-6'>
@@ -42,21 +41,17 @@ export default function BlogList() {
                 </svg>
               </span>
 
-              {/* Judul (menjadi link) */}
+              {/* Judul Blog */}
               <h3 className='mb-1 flex flex-wrap items-center text-lg font-semibold text-gray-900 dark:text-white'>
                 <Link
                   href={`/blog/${slug}`}
-                  className='
-      transition-colors
-      hover:text-accent
-      hover:underline hover:decoration-accent hover:underline-offset-2
-    '
+                  className='transition-colors hover:text-accent hover:underline hover:decoration-accent hover:underline-offset-2'
                 >
                   {post.title}
                 </Link>
 
                 {idx === 0 && (
-                  <span className='ms-3 rounded-sm bg-accent px-2.5 py-0.5 text-sm font-medium text-background dark:text-background'>
+                  <span className='ms-3 rounded-sm bg-accent px-2.5 py-0.5 text-sm font-medium text-background'>
                     Latest
                   </span>
                 )}
@@ -74,12 +69,12 @@ export default function BlogList() {
                 {snippet}
               </p>
 
-              {/* Badge kategori */}
+              {/* Kategori */}
               <div className='flex flex-wrap gap-2'>
                 {post.category.map((cat) => (
                   <span
                     key={cat}
-                    className='glassmorphin rounded-sm px-2 py-0.5 text-xs font-medium text-accent dark:text-accent'
+                    className='glassmorphin rounded-sm px-2 py-0.5 text-xs font-medium text-accent'
                   >
                     {cat}
                   </span>
@@ -89,9 +84,8 @@ export default function BlogList() {
           );
         })}
       </ol>
-      
 
-      {/* Tombol See more (ke halaman daftar blog) */}
+      {/* Tombol See More */}
       <div className='flex pt-6'>
         <Link
           href='/blog'
