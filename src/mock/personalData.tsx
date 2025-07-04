@@ -27,7 +27,7 @@ export const profile: PersonalProfile = {
   socials: {
     twitter: 'https://twitter.com/aziz_dev',
     github: 'https://github.com/khazeez',
-    linkedin: 'httpslinkedin.com/in/khoirul-aziz',
+    linkedin: 'https://linkedin.com/in/khoirul-aziz',
     discord: 'Aziz#1234',
     email: 'eeroel99@gmail.com',
     wa: '+6285784483657',
