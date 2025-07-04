@@ -162,9 +162,10 @@ export default function Hero() {
           <FaWhatsapp size={22} className={iconClass} />
         </a>
       </div>
-      <div className='pointer-events-none absolute inset-0 -z-10'>
+      {/* <div className='pointer-events-none absolute inset-0 -z-10'>
         <div className='absolute inset-20 rounded-full bg-accent/10 blur-3xl' />
-      </div>
+      </div> */}
+      <div className="" id='mouse-glow'></div>
     </section>
   );
 }
