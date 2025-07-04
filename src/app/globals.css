@@ -18,7 +18,7 @@
   --color-accent: var(--accent); /* ← titik koma ditambah */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-poppins: "Poppins", sans-serif
+  --font-poppins: var(--font-poppins);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,9 +35,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   /* font-family: Arial, Helvetica, sans-serif; */
-  font-family: var(--font-poppins);
+  font-family: var(--font-poppins), sans-serif;
   scroll-behavior: smooth;
-  ;
 }
 
 .bg-glow {
