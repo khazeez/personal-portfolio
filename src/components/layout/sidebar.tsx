@@ -11,7 +11,7 @@ import {
 import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 
-const SECTION_IDS = ['about', 'portfolio', 'blog'] as const;
+const SECTION_IDS = ['about', 'experience', 'portfolio', 'blog'] as const;
 type SectionId = (typeof SECTION_IDS)[number];
 
 export default function Hero() {

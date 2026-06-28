@@ -1,16 +1,44 @@
-// components/BlogCardList.tsx
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { mockBlogPosts } from '@/mock/blog';
 import { slugify } from '@/components/ui/slugify';
+import type { BlogPost } from '@/mock/blog';
 
-export default function BlogCardList() {
+type Props = {
+  searchQuery: string;
+  selectedCategory: string | null;
+  onCategoryClick: (category: string | null) => void;
+};
+
+export default function BlogCardList({
+  searchQuery,
+  selectedCategory,
+  onCategoryClick,
+}: Props) {
+  const filtered = mockBlogPosts.filter((post) => {
+    const matchesSearch =
+      searchQuery === '' ||
+      post.title.toLowerCase().includes(searchQuery.toLowerCase());
+
+    const matchesCategory =
+      !selectedCategory || post.category.includes(selectedCategory);
+
+    return matchesSearch && matchesCategory;
+  });
+
+  if (filtered.length === 0) {
+    return (
+      <p className='text-center text-gray-500 py-20'>
+        No posts found matching your search or filter.
+      </p>
+    );
+  }
+
   return (
     <section className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
-      {mockBlogPosts.map((post) => {
-        /* --- util --- */
+      {filtered.map((post) => {
         const slug = slugify(post.title);
 
         const date = new Date(post.timestamp).toLocaleDateString('en-US', {
@@ -19,10 +47,6 @@ export default function BlogCardList() {
           year: 'numeric',
         });
 
-        /* --- gambar --- */
-        // 1) pakai `post.image` kalau ada
-        // 2) fallback ke placeholder lokal (public/blog/[slug].jpg/png) ‑‑ ganti sesuai kebutuhan
-        // 3) fallback terakhir ke Unsplash random agar build tidak error
         const imgSrc =
           (post as any).image ??
           `/blog/${slug}.jpg` ??
@@ -35,7 +59,6 @@ export default function BlogCardList() {
             key={slug}
             className='group overflow-hidden rounded-xl shadow-lg bg-white dark:bg-gray-800 transition-transform hover:-translate-y-1'
           >
-            {/* --- Thumbnail --- */}
             <Link href={`/blog/${slug}`}>
               <Image
                 src={imgSrc}
@@ -47,27 +70,33 @@ export default function BlogCardList() {
               />
             </Link>
 
-            {/* --- Card body --- */}
             <div className='p-5 flex flex-col gap-3'>
-              {/* Tanggal */}
               <time className='text-sm text-gray-500'>{date}</time>
 
-              {/* Judul */}
               <Link href={`/blog/${slug}`}>
                 <h2 className='text-lg font-semibold line-clamp-2 hover:text-accent'>
                   {post.title}
                 </h2>
               </Link>
 
-              {/* Kategori badges */}
               <div className='flex flex-wrap gap-2 mt-auto'>
                 {post.category.map((cat) => (
-                  <span
+                  <button
                     key={cat}
-                    className='text-xs font-medium px-2 py-0.5 rounded-sm glassmorphin text-accent dark:text-accent'
+                    type='button'
+                    onClick={() =>
+                      onCategoryClick(
+                        cat === selectedCategory ? null : cat
+                      )
+                    }
+                    className={`text-xs font-medium px-2 py-0.5 rounded-sm glassmorphin transition-opacity hover:opacity-80 ${
+                      selectedCategory && selectedCategory !== cat
+                        ? 'opacity-40'
+                        : ''
+                    }`}
                   >
                     {cat}
-                  </span>
+                  </button>
                 ))}
               </div>
             </div>

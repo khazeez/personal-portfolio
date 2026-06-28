@@ -1,4 +1,4 @@
-type BlogPost = {
+export type BlogPost = {
   image: string
   title: string;
   content: string; // ~500 karakter

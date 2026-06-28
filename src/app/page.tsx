@@ -1,5 +1,6 @@
 import About from '@/components/layout/about';
 import Hero from '@/components/layout/sidebar';
+import Experience from '@/components/layout/experience';
 import BlogList from '@/components/layout/blogList';
 import PortfolioList from '@/components/layout/portfolioList';
 import Footer from '@/components/layout/footer';
@@ -35,8 +36,8 @@ export default function Home() {
         "
       >
         <About />
-        {/* <Experience /> */}
         <PortfolioList />
+        <Experience />
         <BlogList />
         <Footer />
       </main>

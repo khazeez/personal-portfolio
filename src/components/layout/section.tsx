@@ -1,8 +1,7 @@
-'use client'; // jika kamu pakai Next.js App Router
-
+'use client';
 import { useEffect, useState } from 'react';
 
-const SECTION_IDS = ['about', 'portfolio', 'blog'];
+const SECTION_IDS = ['about', 'experience', 'portfolio', 'blog'];
 
 export default function Sidebar() {
   const [activeId, setActiveId] = useState<string>('about');
