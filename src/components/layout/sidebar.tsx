@@ -9,18 +9,43 @@ import {
   FaWhatsapp,
 } from 'react-icons/fa';
 import React, { useCallback, useEffect, useState } from 'react';
-import Image from 'next/image';
 
-const SECTION_IDS = ['about', 'experience', 'portfolio', 'blog'] as const;
+const SECTION_IDS = ['about', 'portfolio', 'experience', 'blog'] as const;
 type SectionId = (typeof SECTION_IDS)[number];
+
+const navIcons: Record<SectionId, React.ReactNode> = {
+  about: (
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' className='w-4 h-4'>
+      <path d='M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z' />
+    </svg>
+  ),
+  portfolio: (
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' className='w-4 h-4'>
+      <path d='M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v.19l-6.58 2.575a2.25 2.25 0 0 1-1.84 0L3 4.44v-.19Z' />
+      <path d='M3 7.045v7.705c0 .621.504 1.125 1.125 1.125h11.75c.621 0 1.125-.504 1.125-1.125V7.045l-5.823 2.278a3.75 3.75 0 0 1-3.154 0L3 7.045Z' />
+    </svg>
+  ),
+  experience: (
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' className='w-4 h-4'>
+      <path fillRule='evenodd' d='M4.5 2A1.5 1.5 0 0 0 3 3.5v13A1.5 1.5 0 0 0 4.5 18h11a1.5 1.5 0 0 0 1.5-1.5V7.621a1.5 1.5 0 0 0-.44-1.06l-4.12-4.122A1.5 1.5 0 0 0 11.378 2H4.5Zm2.25 8.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Zm0 3a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z' clipRule='evenodd' />
+    </svg>
+  ),
+  blog: (
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' className='w-4 h-4'>
+      <path d='M3.196 12.87l-.825.483a.75.75 0 0 0 0 1.294l7.25 4.25a.75.75 0 0 0 .758 0l7.25-4.25a.75.75 0 0 0 0-1.294l-.825-.484-5.666 3.322a2.25 2.25 0 0 1-2.276 0L3.196 12.87Z' />
+      <path d='M3.196 8.87l-.825.483a.75.75 0 0 0 0 1.294l7.25 4.25a.75.75 0 0 0 .758 0l7.25-4.25a.75.75 0 0 0 0-1.294l-.825-.484-5.666 3.322a2.25 2.25 0 0 1-2.276 0L3.196 8.87Z' />
+      <path d='M10.38 1.103a.75.75 0 0 0-.76 0l-7.25 4.25a.75.75 0 0 0 0 1.294l7.25 4.25a.75.75 0 0 0 .76 0l7.25-4.25a.75.75 0 0 0 0-1.294l-7.25-4.25Z' />
+    </svg>
+  ),
+};
 
 export default function Hero() {
   const [activeId, setActiveId] = useState<SectionId>('about');
   const [scrolled, setScrolled] = useState(false);
 
-  const iconClass = 'transition-transform hover:-translate-y-1 opacity-60 hover:opacity-100';
+  const iconClass =
+    'transition-all duration-300 hover:-translate-y-0.5 text-gray-400 hover:text-accent';
 
-  /* ────────── ScrollSpy ────────── */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -47,7 +72,6 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
 
-  /* ────────── Scroll detect ────────── */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
@@ -55,7 +79,6 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  /* ────────── Smooth scroll on click ────────── */
   const handleClick = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: 'smooth',
@@ -63,7 +86,6 @@ export default function Hero() {
     });
   }, []);
 
-  /* ────────── Sidebar link ────────── */
   const SidebarLink = React.memo(({ id }: { id: SectionId }) => {
     const isActive = activeId === id;
 
@@ -75,99 +97,100 @@ export default function Hero() {
           tabIndex={0}
           aria-current={isActive ? 'page' : undefined}
           className={`
-            block text-left
-            transition-all duration-800
-            ease-[cubic-bezier(.33,1,.68,1)]
-            ${
-              isActive
-                ? 'text-accent font-semibold translate-x-2'
-                : 'text-gray-500 translate-x-0'
-            }
+            group w-full text-left text-xs tracking-[0.2em]
+            transition-all duration-700 ease-[cubic-bezier(.33,1,.68,1)]
+            ${isActive ? 'text-accent' : 'text-gray-500 hover:text-gray-300'}
           `}
         >
-          {id.toUpperCase()}
+          <span className='flex flex-col lg:flex-row items-center gap-1 lg:gap-3 py-1'>
+            {/* Ikon — hanya mobile */}
+            <span className='lg:hidden'>
+              {navIcons[id]}
+            </span>
+            {/* Garis — hanya desktop */}
+            <span className='relative hidden lg:inline-flex items-center'>
+              <span
+                className={`inline-block h-px transition-all duration-700 ease-[cubic-bezier(.33,1,.68,1)] ${
+                  isActive ? 'w-8 bg-accent' : 'w-4 bg-gray-600 group-hover:w-6'
+                }`}
+              />
+              <span
+                className={`absolute right-0 h-px bg-accent transition-all duration-700 ease-[cubic-bezier(.33,1,.68,1)] ${
+                  isActive
+                    ? 'w-0 opacity-0'
+                    : 'w-0 opacity-0 group-hover:w-2 group-hover:opacity-100'
+                }`}
+              />
+            </span>
+            <span className='text-[9px] lg:text-xs'>{id.toUpperCase()}</span>
+          </span>
         </button>
       </li>
     );
   });
   SidebarLink.displayName = 'SidebarLink';
 
-  /* ────────── UI Layout ────────── */
   return (
-    <section className='flex flex-col lg:justify-between lg:h-screen lg:py-10 gap-6 pt-7 lg:pt-0 px-5 lg:px-10'>
-      {/* Navbar */}
+    <section className='relative flex flex-col lg:justify-between lg:h-screen lg:py-12 gap-5 lg:gap-8 pt-5 lg:pt-0 px-5 lg:px-12'>
+      {/* Nav mobile — selalu terlihat setelah scroll dikit */}
       <nav
         className={`
-              fixed inset-x-0 bottom-0 z-30 tracking-widest order-1 lg:order-2 lg:static
-              transition-all duration-500 ease-[cubic-bezier(.4,0,.2,1)]
-              ${
-                scrolled
-                  ? 'opacity-100 translate-y-0 bg-background/80 backdrop-blur items-center justify-center'
-                  : 'opacity-0 translate-y-full pointer-events-none'
-              }
-              lg:opacity-100 lg:translate-y-0 lg:pointer-events-auto
-              lg:bg-transparent lg:backdrop-blur-none lg:pb-40
-            `}
+          fixed inset-x-0 bottom-0 z-30 tracking-widest order-1 lg:order-2 lg:static
+          transition-all duration-500 ease-[cubic-bezier(.4,0,.2,1)]
+          flex items-center justify-center
+          ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}
+          lg:opacity-100 lg:translate-y-0 lg:pointer-events-auto
+          lg:bg-transparent lg:pb-48
+        `}
       >
-        <ul className='flex lg:flex-col lg:gap-3 justify-between px-5 py-2 text-sm'>
+        <ul className='flex lg:flex-col lg:gap-2 justify-between px-4 py-2.5 w-full max-w-md mx-auto bg-background/90 backdrop-blur-xl border-t border-accent/10 shadow-[0_-4px_30px_rgba(0,0,0,0.2)] lg:bg-transparent lg:border-none lg:shadow-none lg:max-w-none'>
           {SECTION_IDS.map((id) => (
             <SidebarLink key={id} id={id} />
           ))}
         </ul>
       </nav>
 
-      {/* Profil */}
-      <div className='order-2 lg:order-1 leading-7 tracking-wider space-y-3 lg:pt-20'>
-        <div className=''>
-          <div className=' space-y-3'>
-            <h1 className='text-4xl font-bold '>{profile.name}</h1>
-            <p className='text-xl'>{profile.role}</p>
-          </div>
+      {/* Profile */}
+      <div className='order-2 lg:order-1 space-y-3 lg:space-y-6 lg:pt-16'>
+        <div className='space-y-0.5'>
+          <h1 className='text-xl lg:text-3xl font-bold text-gray-900 dark:text-white transition-colors duration-500'>
+            {profile.name}
+          </h1>
+          <p className='text-xs lg:text-sm text-gray-400 transition-colors duration-500'>
+            {profile.role}
+          </p>
         </div>
 
-        <p className='mt-3 text-gray-600'>{about.headline}</p>
+        <p className='text-xs lg:text-sm leading-relaxed text-gray-500 dark:text-gray-400 transition-colors duration-500'>
+          {about.headline}
+        </p>
       </div>
 
-      {/* Ikon sosial */}
-      <div className='order-3 flex gap-5 pt-3 pb-20 bg-red'>
-        <a
-          href={profile.socials.twitter}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <FaTwitter size={22} className={iconClass} />
-        </a>
-        <a
-          href={profile.socials.github}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <FaGithub size={22} className={iconClass} />
-        </a>
-        <a
-          href={profile.socials.linkedin}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <FaLinkedin size={22} className={iconClass} />
-        </a>
-        <a href={`mailto:${profile.socials.email}`}>
-          <FaEnvelope size={22} className={iconClass} />
-        </a>
-        <a
-          href={`https://wa.me/${profile.socials.wa.replace(/[^0-9]/g, '')}`}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <FaWhatsapp size={22} className={iconClass} />
-        </a>
+      {/* Social */}
+      <div className='order-3 pb-4 lg:pb-0'>
+        <div className='flex gap-3 lg:gap-4'>
+          <a href={profile.socials.twitter} target='_blank' rel='noopener noreferrer' className='transition-transform duration-300 hover:scale-110'>
+            <FaTwitter size={16} className={iconClass} />
+          </a>
+          <a href={profile.socials.github} target='_blank' rel='noopener noreferrer' className='transition-transform duration-300 hover:scale-110'>
+            <FaGithub size={16} className={iconClass} />
+          </a>
+          <a href={profile.socials.linkedin} target='_blank' rel='noopener noreferrer' className='transition-transform duration-300 hover:scale-110'>
+            <FaLinkedin size={16} className={iconClass} />
+          </a>
+          <a href={`mailto:${profile.socials.email}`} className='transition-transform duration-300 hover:scale-110'>
+            <FaEnvelope size={16} className={iconClass} />
+          </a>
+          <a
+            href={`https://wa.me/${profile.socials.wa.replace(/[^0-9]/g, '')}`}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='transition-transform duration-300 hover:scale-110'
+          >
+            <FaWhatsapp size={16} className={iconClass} />
+          </a>
+        </div>
       </div>
-      {/* <div className='pointer-events-none absolute inset-0 -z-10'>
-        <div className='absolute inset-20 rounded-full bg-accent/10 blur-3xl' />
-      </div> */}
-      <div className="" id='mouse-glow'></div>
-      <div className="" id='mouse-glow'></div>
-      {/* <div className="" id='mouse-glow'></div> */}
     </section>
   );
 }

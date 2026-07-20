@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const SECTION_IDS = ['about', 'experience', 'portfolio', 'blog'];
+const SECTION_IDS = ['about', 'portfolio', 'experience', 'blog'];
 
 export default function Sidebar() {
   const [activeId, setActiveId] = useState<string>('about');

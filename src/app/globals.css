@@ -23,9 +23,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #141923;
+    --background: #0c0f17;
     --foreground: #CBD5E1;
-    /* --background: #151b26; */
   }
 }
 
@@ -34,9 +33,24 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-family: var(--font-poppins), sans-serif;
   scroll-behavior: smooth;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--accent) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.06;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 0%, transparent 70%);
 }
 
 .bg-glow {

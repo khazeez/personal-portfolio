@@ -30,8 +30,8 @@ export default function Home() {
       {/* === KONTEN ====================================================== */}
       <main
         className="
-          space-y-10                  /* jarak antar‑section */
-          lg:col-span-3 lg:col-start-3/* mulai di kolom‑3, ambil 3 kolom */
+          space-y-6 lg:space-y-10
+          lg:col-span-3 lg:col-start-3
           lg:p-10
         "
       >

@@ -1,24 +1,38 @@
 'use client';
 
-import Glassmorphin from '../ui/glassmorphin';
 import { mockBlogPosts } from '@/mock/blog';
 import Link from 'next/link';
 import { slugify } from '@/components/ui/slugify';
 
 export default function BlogList() {
-  const posts = mockBlogPosts.slice(0, 5); // Ambil 5 post teratas
+  const posts = mockBlogPosts.slice(0, 5);
 
   return (
-    <div className='tracking-widest py-10 space-y-10'>
+    <div className='py-6 lg:py-10 space-y-6 lg:space-y-8'>
       <h1
         id='blog'
-        className='scroll-mt-24 text-3xl lg:text-5xl font-bold border-b-4 border-b-accent w-fit'
+        className='scroll-mt-24 text-2xl lg:text-5xl font-bold'
       >
-        Writing
+        <span className='relative inline-block'>
+          Writing
+          <svg
+            className='absolute -bottom-1.5 left-0 w-full h-3'
+            viewBox='0 0 120 12'
+            preserveAspectRatio='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M0,8 C5,2 10,12 15,8 C20,2 25,12 30,8 C35,2 40,12 45,8 C50,2 55,12 60,8 C65,2 70,12 75,8 C80,2 85,12 90,8 C95,2 100,12 105,8 C110,2 115,12 120,8'
+              fill='none'
+              stroke='var(--accent)'
+              strokeWidth='2.5'
+              strokeLinecap='round'
+            />
+          </svg>
+        </span>
       </h1>
 
-      {/* Timeline */}
-      <ol className='relative ml-4 border-s border-gray-200 dark:border-gray-700'>
+      <div className='divide-y divide-gray-200/50 dark:divide-gray-700/50'>
         {posts.map((post, idx) => {
           const slug = slugify(post.title);
           const snippet =
@@ -27,71 +41,55 @@ export default function BlogList() {
               : post.content.trim();
 
           return (
-            <li key={slug} className='mb-10 ms-6'>
-              {/* Titik timeline */}
-              <span className='absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-accent ring-4 ring-blue-400/40'>
-                <svg
-                  className='h-2.5 w-2.5 text-background dark:text-background'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  aria-hidden='true'
-                >
-                  <path d='M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z' />
-                </svg>
-              </span>
-
-              {/* Judul Blog */}
-              <h3 className='mb-1 flex flex-wrap items-center text-lg font-semibold text-gray-900 dark:text-white'>
-                <Link
-                  href={`/blog/${slug}`}
-                  className='transition-colors hover:text-accent hover:underline hover:decoration-accent hover:underline-offset-2'
-                >
-                  {post.title}
-                </Link>
-
-                {idx === 0 && (
-                  <span className='ms-3 rounded-sm bg-accent px-2.5 py-0.5 text-sm font-medium text-background'>
-                    Latest
-                  </span>
-                )}
-              </h3>
-
-              <time className='block mb-2 text-sm leading-none text-gray-400 dark:text-gray-500'>
-                {new Date(post.timestamp).toLocaleDateString('en-US', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric',
-                })}
-              </time>
-
-              <p className='mb-4 text-base text-gray-500 dark:text-gray-400'>
-                {snippet}
-              </p>
-
-              {/* Kategori */}
-              <div className='flex flex-wrap gap-2'>
-                {post.category.map((cat) => (
-                  <span
-                    key={cat}
-                    className='glassmorphin rounded-sm px-2 py-0.5 text-xs font-medium text-accent'
+            <div key={slug} className='py-5 first:pt-0 last:pb-0'>
+              <div className='space-y-2'>
+                <div className='flex flex-wrap items-center gap-2'>
+                  <Link
+                    href={`/blog/${slug}`}
+                    className='text-base font-semibold text-gray-900 dark:text-white hover:text-accent transition-colors'
                   >
-                    {cat}
-                  </span>
-                ))}
+                    {post.title}
+                  </Link>
+                  {idx === 0 && (
+                    <span className='text-[10px] uppercase tracking-wider font-semibold text-accent border border-accent/30 px-2 py-0.5 rounded-sm'>
+                      Latest
+                    </span>
+                  )}
+                </div>
+
+                <div className='flex items-center gap-3 text-xs text-gray-400'>
+                  <time>
+                    {new Date(post.timestamp).toLocaleDateString('en-US', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    })}
+                  </time>
+                  <span className='text-gray-600'>/</span>
+                  <div className='flex flex-wrap gap-1.5'>
+                    {post.category.map((cat) => (
+                      <span key={cat} className='text-accent'>
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <p className='text-sm leading-relaxed text-gray-500 dark:text-gray-400'>
+                  {snippet}
+                </p>
               </div>
-            </li>
+            </div>
           );
         })}
-      </ol>
+      </div>
 
-      {/* Tombol See More */}
-      <div className='flex pt-6'>
+      <div className='flex pt-2'>
         <Link
           href='/blog'
-          className='inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-6 py-2 text-sm font-medium text-gray-900 transition-colors hover:bg-accent hover:text-background focus:outline-none focus:ring-2 focus:ring-accent dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-accent dark:hover:text-background'
+          className='text-sm font-medium text-accent hover:underline underline-offset-2'
         >
-          See more
+          See all articles &rarr;
         </Link>
       </div>
     </div>
